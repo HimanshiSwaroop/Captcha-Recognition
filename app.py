@@ -161,22 +161,14 @@ def model_predict(img_path,model):
     return captcha_text
     
 
-
-
-#q = model_predict('/Users/himanshi/Desktop/AML_Proj/generated_captcha_images/2AQ7.png',model)
-
-#q
-
-
-
-
-
-
-
-@app.route('/', methods=['GET','POST'])
+@app.route('/', methods=['GET'])
 def index():
     # Main page
     return render_template('index.html')
+
+
+@app.route('/predict', methods=['GET', 'POST'])
+def upload():
     if request.method == 'POST':
         # Get the file from post request
         f = request.files['file']
@@ -188,13 +180,16 @@ def index():
         f.save(file_path)
         preds = model_predict(file_path,model)
         output = preds
-    return render_template('result.html', result=output)
-
+        return render_template('result.html', result=output)
+    return None
 
 
 
 if __name__ == '__main__':
     app.run(port=5000,debug=True)
+
+
+
 
      
 
