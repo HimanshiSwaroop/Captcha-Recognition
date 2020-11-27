@@ -1,0 +1,43 @@
+{% extends "base.html" %} 
+{% block content %}
+<style>
+body {
+  background-image: url('https://images.squarespace-cdn.com/content/v1/5823aa9d2994cae36710b1a7/1480125727278-C29HVQ4PUHBGA20E47OD/ke17ZwdGBToddI8pDm48kLkXF2pIyv_F2eUT9F60jBl7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0iyqMbMesKd95J-X4EagrgU9L3Sa3U8cogeb0tjXbfawd0urKshkc5MgdBeJmALQKw/HiRes.jpg?format=1500w');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+</style>
+
+<h2 style="color: 085A89">Captcha Recognizer</h2>
+
+<div>
+	<br>
+	<br>
+    <form id="upload-file" method="post" enctype="multipart/form-data">
+        <label for="imageUpload" class="upload-label">
+            Choose...
+        </label>
+        <input type="file" name="file" id="imageUpload" accept=".png, .jpg, .jpeg">
+    </form>
+
+    <div class="image-section" style="display:none;">
+        <div class="img-preview">
+            <div id="imagePreview">
+            </div>
+        </div>
+        <div>
+            <button type="button" class="btn btn-primary btn-lg " id="btn-predict">Predict!</button>
+        </div>
+    </div>
+
+
+    <h3 id="result">
+        <span> </span>
+    </h3>
+	<br>
+	{{ result }}
+	
+</div>
+
+{% endblock %}
